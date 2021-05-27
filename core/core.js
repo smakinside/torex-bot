@@ -82,7 +82,7 @@ vk.updates.on('message_new', async ctx => {
 
   // Игнорирование лишних сообщений
   if (!ctx.isChat) return
-  if (config.messages.active_chats != 'all' && !config.messages.active_chats.includes(ctx.chatId)) return
+  if (config.general.active_chats != 'all' && !config.general.active_chats.includes(ctx.chatId)) return
 
   // Логирование сообщений
   Logger.info(`#${ctx.chatId} ${ctx.senderId} ${ctx.isOutbox ? '<-' : '->'} ${ctx?.text ? ctx.text : '<no_text>'} ${ctx?.attachments}`)
@@ -94,7 +94,7 @@ vk.updates.on('message_new', async ctx => {
   ctx.chat = await db.getChat(ctx.chatId)
 
   // Запись сообщения в БД
-  if (ctx.text && config.database.data_save && !ctx.chat.data.includes(ctx.text)) {
+  if (ctx.text && config.general.data_save && !ctx.chat.data.includes(ctx.text)) {
 
     // Запись в БД
     db.chats.find(chat => chat.id == ctx.chatId).data.push(ctx.text)
@@ -104,22 +104,22 @@ vk.updates.on('message_new', async ctx => {
   }
 
   // Генерация сообщения с определенным шансом
-  if (Math.random() * 100 < config.messages.chance) {
+  if (Math.random() * 100 < config.general.chance) {
 
     // Сообщение в консоль о генерации текста
     Logger.info('Генерация текста ...')
 
     // Генерация текста
     // Если данных будет недостаточно произойдет ошибка <<Maximum call stack size exceeded>>
-    let sentence = new Markov(ctx.chat.data, config.generation.min_words).makeChain()
+    let sentence = new Markov(ctx.chat.data, config.general.min_words).makeChain()
 
     // Форматирование текста
-    if (config.messages.format.to_lower_case) sentence = sentence.toLowerCase()
-    if (config.messages.format.capitalize_word) sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1)
-    if (config.messages.format.end_dot) sentence = sentence + '.'
+    if (config.format.to_lower_case) sentence = sentence.toLowerCase()
+    if (config.format.capitalize_word) sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1)
+    if (config.format.end_dot) sentence = sentence + '.'
 
     // Предупреждение при превышении лимита символов
-    if (sentence.split('').length > config.messages.max_symbols) return Logger.warn(`#${ctx.chatId} Превышен лимит символов (${sentence.split('').length}/${config.messages.symbols_limit})`)
+    if (sentence.split('').length > config.general.max_symbols) return Logger.warn(`#${ctx.chatId} Превышен лимит символов (${sentence.split('').length}/${config.general.max_symbols})`)
 
     // Статус набора текста
     await ctx.setActivity()

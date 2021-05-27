@@ -1,6 +1,6 @@
 {
   "name": "cortex-bot",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "vk delirium generator bot",
   "main": "core/core.js",
   "type": "module",
