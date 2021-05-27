@@ -12,11 +12,15 @@ import Markov from 'markov-generator'
 import fs from 'fs'
 import Logger from './logger.js'
 
+// Пути к файлам
+const data_path = 'data.json'
+const config_path = 'config.yml'
+
 /** Конфиг */
-let config = YAML.parse(fs.readFileSync('config.yml', 'utf8'))
+let config = YAML.parse(fs.readFileSync(config_path, 'utf8'))
 
 // БД и файл проекта
-const db = JSON.parse(fs.readFileSync('data.json', 'utf8'))
+const db = JSON.parse(fs.readFileSync(data_path, 'utf8'))
 const project = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 
 /** VK API */
@@ -27,7 +31,7 @@ const vk = new VK({token: config.vk_api.token, v: 5.130, apiLimit: 1})
  * @param {object} data БД
  */
 db.write = (data) => {
-  fs.writeFileSync('data.json', JSON.stringify(data, null, '\t'))
+  fs.writeFileSync(data_path, JSON.stringify(data, null, '\t'))
 }
 
 /**
@@ -61,10 +65,10 @@ Logger.info(`Cortex Bot v${project.version}`)
 Logger.info('Подключение к VK API ...')
 
 // Перезагрузка конфигурации при её изменении
-watchFile('./config.yml', async () => {
+fs.watchFile(config_path, async () => {
 
   // Парсинг
-  config = YAML.parse(fs.readFileSync('config.yml', 'utf8'))
+  config = YAML.parse(fs.readFileSync(config_path, 'utf8'))
 
   // Запись в лог
   Logger.info('Конфигурация перезагружена')
@@ -107,7 +111,7 @@ vk.updates.on('message_new', async ctx => {
 
     // Генерация текста
     // Если данных будет недостаточно произойдет ошибка <<Maximum call stack size exceeded>>
-    let sentence = new Markov(getChat().data, config.generation.min_words).makeChain()
+    let sentence = new Markov(ctx.chat.data, config.generation.min_words).makeChain()
 
     // Форматирование текста
     if (config.messages.format.to_lower_case) sentence = sentence.toLowerCase()
@@ -115,17 +119,17 @@ vk.updates.on('message_new', async ctx => {
     if (config.messages.format.end_dot) sentence = sentence + '.'
 
     // Предупреждение при превышении лимита символов
-    if (sentence.split('').length > config.messages.symbols_limit) return Logger.warn(`#${ctx.chatId} Превышен лимит символов (${sentence.split('').length}/${config.messages.symbols_limit})`)
+    if (sentence.split('').length > config.messages.max_symbols) return Logger.warn(`#${ctx.chatId} Превышен лимит символов (${sentence.split('').length}/${config.messages.symbols_limit})`)
 
     // Статус набора текста
     await ctx.setActivity()
 
     // Задержка перед отправкой сообщений
-    // Высчитывается на основе количества символов в сгенерированном тексте для имитации написания
+    // Высчитывается на основе количества символов в тексте для имитации написания
     await new Promise(resolve => setTimeout(resolve, sentence.split('').length * 2 + '00'))
 
     // Отправка сообщения
-    await ctx.send(sentence)
+    ctx.send(sentence)
   }
 })
 

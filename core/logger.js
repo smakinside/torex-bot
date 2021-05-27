@@ -30,7 +30,7 @@ export default class Logger {
    * @param {string} text - Текст сообщения
    */
   static info(text) {
-    console.log(`${getTimeString()} INFO - ${text}`.replace(/\n/g, '\\n'))
+    console.log(`${getTimeString()} INFO - ${text}`)
   }
 
   /**

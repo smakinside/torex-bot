@@ -1,6 +1,6 @@
 {
   "name": "cortex-bot",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "vk delirium generator bot",
   "main": "core/core.js",
   "type": "module",
@@ -14,7 +14,9 @@
   "keywords": [
     "vk",
     "bot",
-    "markov"
+    "markov",
+    "delirium",
+    "generator"
   ],
   "author": "hepller",
   "license": "MIT",
