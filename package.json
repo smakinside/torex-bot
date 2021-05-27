@@ -1,0 +1,30 @@
+{
+  "name": "cortex-bot",
+  "version": "0.6.3",
+  "description": "vk delirium generator bot",
+  "main": "core/core.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hepller/cortex-bot.git"
+  },
+  "keywords": [
+    "vk",
+    "bot",
+    "markov"
+  ],
+  "author": "hepller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hepller/cortex-bot/issues"
+  },
+  "homepage": "https://github.com/hepller/cortex-bot#readme",
+  "dependencies": {
+    "markov-generator": "^1.2.3",
+    "vk-io": "^4.3.0",
+    "yaml": "^1.10.2"
+  }
+}
