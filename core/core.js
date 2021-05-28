@@ -12,15 +12,11 @@ import Markov from 'markov-generator'
 import fs from 'fs'
 import Logger from './logger.js'
 
-// Пути к файлам
-const data_path = 'data.json'
-const config_path = 'config.yml'
-
 /** Конфиг */
-let config = YAML.parse(fs.readFileSync(config_path, 'utf8'))
+let config = YAML.parse(fs.readFileSync('config.yml', 'utf8'))
 
 // БД и файл проекта
-const db = JSON.parse(fs.readFileSync(data_path, 'utf8'))
+const db = JSON.parse(fs.readFileSync('data.json', 'utf8'))
 const project = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 
 /** VK API */
@@ -31,7 +27,7 @@ const vk = new VK({token: config.vk_api.token, v: 5.130, apiLimit: 1})
  * @param {object} data БД
  */
 db.write = (data) => {
-  fs.writeFileSync(data_path, JSON.stringify(data, null, '\t'))
+  fs.writeFileSync('data.json', JSON.stringify(data, null, '\t'))
 }
 
 /**
@@ -65,10 +61,10 @@ Logger.info(`Cortex Bot v${project.version}`)
 Logger.info('Подключение к VK API ...')
 
 // Перезагрузка конфигурации при её изменении
-fs.watchFile(config_path, async () => {
+fs.watchFile('config.yml', async () => {
 
   // Парсинг
-  config = YAML.parse(fs.readFileSync(config_path, 'utf8'))
+  config = YAML.parse(fs.readFileSync('config.yml', 'utf8'))
 
   // Запись в лог
   Logger.info('Конфигурация перезагружена')
