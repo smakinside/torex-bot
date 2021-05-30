@@ -93,7 +93,7 @@ vk.updates.on('message_new', async ctx => {
   if (ctx.text && config.general.data_save && !ctx.chat.data.includes(ctx.text)) {
 
     // Запись в БД
-    db.chats.find(chat => chat.id == ctx.chatId).data.push(ctx.text)
+    ctx.chat.data.push(ctx.text)
 
     // Сохранение БД
     db.write(db)
@@ -107,7 +107,7 @@ vk.updates.on('message_new', async ctx => {
 
     // Генерация текста
     // Если данных будет недостаточно произойдет ошибка <<Maximum call stack size exceeded>>
-    let sentence = new Markov(ctx.chat.data, config.general.min_words).makeChain()
+    let sentence = new Markov({input: ctx.chat.data, minLenght: config.general.min_words}).makeChain()
 
     // Форматирование текста
     if (config.format.to_lower_case) sentence = sentence.toLowerCase()
