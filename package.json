@@ -1,19 +1,12 @@
 {
   "name": "cortex-bot",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "vk text generator bot",
   "main": "bot.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hepller/cortex-bot.git"
   },
-  "keywords": [
-    "vk",
-    "bot",
-    "markov",
-    "messages",
-    "generator"
-  ],
   "author": "hepller",
   "license": "MIT",
   "bugs": {

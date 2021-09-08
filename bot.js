@@ -15,7 +15,7 @@ const data = require(`./data`)
 const project = require('./package')
 
 /** VK API */
-const vk = new VK({token: config.token, v: 5.131, apiLimit: 1})
+const vk = new VK({token: config.token, v: 5.131})
 
 // Префиксы для логирования
 const succes_prefix = '\u001B[32m>\u001B[0m'
