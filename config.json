@@ -1,0 +1,6 @@
+{
+  "token": "TOKEN",
+  "chance": 10,
+  "min_words": 2,
+  "max_symbols": 250
+}
