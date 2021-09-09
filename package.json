@@ -1,8 +1,8 @@
 {
   "name": "cortex-bot",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "vk text generator bot",
-  "main": "bot.js",
+  "main": "core/core.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hepller/cortex-bot.git"

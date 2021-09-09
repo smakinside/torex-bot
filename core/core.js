@@ -9,10 +9,13 @@
 const {VK} = require('vk-io')
 const Markov = require('markov-generator')
 
+/** Функции */
+const Utils = require('./utils')
+
 // Конфиг, паттерн и файл проекта
-const config = require('./config')
-const data = require(`./data`)
-const project = require('./package')
+const config = require('../config')
+const data = require('../data')
+const project = require('../package')
 
 /** VK API */
 const vk = new VK({token: config.token, v: 5.131})
@@ -36,10 +39,10 @@ vk.updates.on('message_new', async ctx => {
   if (!ctx.isChat || ctx.isOutbox || ctx.isGroup) return
 
   // Генерация сообщения с определенным шансом
-  if (Math.random() * 100 < config.chance) {
+  if (Utils.getWithChance(config.chance)) {
 
     // Статус набора текста
-    ctx.setActivity()
+    await ctx.setActivity()
 
     /** Сгенерированный текст */
     const sentence = new Markov({input: data, minLenght: config.min_words}).makeChain()
@@ -48,8 +51,8 @@ vk.updates.on('message_new', async ctx => {
     if (sentence.split('').length > config.max_symbols) return console.warn(warn_prefix, `#${ctx.chatId} Symbols limit exceeded (${sentence.split('').length}/${config.max_symbols})`)
 
     // Отправка сообщения
-    ctx.send(sentence)
-      .then(() => console.log(succes_prefix, `#${ctx.chatId} Text generated`))
+    await ctx.send(sentence)
+      .then(() => console.log(succes_prefix, `#${ctx.chatId} Text generated (${Utils.getTimeString()})`))
   }
 })
 
