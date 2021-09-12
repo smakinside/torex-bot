@@ -38,7 +38,7 @@ vk.updates.on('message_new', async ctx => {
   if (Utils.getWithChance(config.chance)) {
 
     // Сообщение в консоль о начале генеарции
-    console.log(`Generation started <#${ctx.chatId}> ${Utils.getTimeString()}`)
+    console.log(`Generation started ${Utils.getTimeString()} <#${ctx.chatId}>`)
 
     // Статус набора текста
     await ctx.setActivity()
@@ -57,7 +57,7 @@ vk.updates.on('message_new', async ctx => {
 
     // Отправка сообщения
     await ctx.send(config.format ? Utils.formatText(sentence) : sentence)
-      .then(() => console.log(`Text generated <#${ctx.chatId}> ${final_time}ms`))
+      .then(() => console.log(`Text generated ${final_time}ms <#${ctx.chatId}>`))
   }
 })
 
