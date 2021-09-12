@@ -1,13 +1,13 @@
-/** __   __   __  ___  ___
- * /  ' /  \ |__)  |  |__  \_/
- * \__. \__/ |  \  |  |___ / \
+/** __   __   __  ___  ___         __   __  ___
+ * /  ' /  \ |__)  |  |__  \_/    |__) /  \  |
+ * \__. \__/ |  \  |  |___ / \    |__) \__/  |
  *
  * @copyright © 2021 hepller
  */
 
 /** Функции */
 module.exports = class Utils {
-  
+
   /** Получает текущее время в формате `hh:mm:ss` */
   static getTimeString() {
 
@@ -24,12 +24,20 @@ module.exports = class Utils {
     // Возвращение строки
     return `${hours}:${minutes}:${seconds}`
   }
-  
+
   /**
    * Возвращает `true` с определенным шансом
    * @param {number} likelihood Вероятность (%)
    */
   static getWithChance(likelihood) {
     return Math.random() * 100 < likelihood
+  }
+
+  /**
+   * Форматирует текст (устанавливает заглавную букву и точку в конце)
+   * @param {string} text Текст для форматирования
+   */
+  static formatText(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1) + '.'
   }
 }
