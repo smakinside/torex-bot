@@ -19,6 +19,8 @@ messages:
   active_chats: all
   # Форматирование текста
   format: false
+  # Имитация набора текста
+  writing_imitation: true
 
 # Генерация текста
 generation:
