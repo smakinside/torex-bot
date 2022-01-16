@@ -1,8 +1,8 @@
-# 🧠 Cortex Bot ![Release](https://img.shields.io/github/v/release/hepller/cortex-bot)
+# 🧠 Cortex Bot ![Release](https://img.shields.io/github/v/release/foammys/cortex-bot-tg)
 
-> Бот [ВКонтакте](https://vk.com) для генерации сообщений с помощью цепей Маркова
+> Бот [Telegram](https://telegram.org) для генерации сообщений с помощью цепей Маркова
 
-![Size](https://img.shields.io/github/repo-size/hepller/cortex-bot)
+![Size](https://img.shields.io/github/repo-size/foammys/cortex-bot-tg)
 ![License](https://img.shields.io/github/license/hepller/cortex-bot)
 
 ## ⚙ Конфигурация
@@ -16,5 +16,6 @@
 ## 📄 Лицензия
 
 Copyright © 2021-2022 [hepller](https://github.com/hepller)
+Forked by [foammy](https://github.com/foammys)
 
 Проект распространяется под лицензией [MIT](license)
