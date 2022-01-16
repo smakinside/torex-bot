@@ -3,6 +3,7 @@
  * \__ \__/ |  \  |  |___ / \
  *
  * @copyright © 2021-2022 hepller
+ * 2022 | forked by foammy
  */
 
 /** Функции */
