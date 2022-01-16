@@ -69,13 +69,14 @@ tg.on('text', async ctx => {
     // Предупреждение при превышении лимита символов
     if (formatted_sentence.split('').length > config.messages.symbols_limit) return Logger.warn(`#${ctx.chat.id} Превышен лимит символов (${formatted_sentence.split('').length}/${config.messages.symbols_limit})`)
 
+    // Установка статуса набора текста
+    tg.telegram.sendChatAction(ctx.chat.id, 'typing')
+
+    // Задержка перед отправкой сообщений для имитации написания (если включено)
+    // * Высчитывается на основе количества символов в сгенерированном тексте
+    if (config.messages.writing_imitation) await Utils.sleep(formatted_sentence.split('').length + '00')
+
     // Отправка сообщения
     ctx.reply(formatted_sentence).then(() => Logger.info(`#${ctx.chat.id} Сообщение сгенерировано ("${sentence}")`))
   }
 })
-
-// Логирование неперехваченных исключений
-process.on('uncaughtException', error => Logger.error(error.stack))
-
-// Логирование необработанных ошибок (promise error)
-process.on('unhandledRejection', error => Logger.error(error.stack))
