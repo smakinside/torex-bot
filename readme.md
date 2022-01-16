@@ -16,6 +16,7 @@
 ## 📄 Лицензия
 
 Copyright © 2021-2022 [hepller](https://github.com/hepller)
+
 Forked by [foammy](https://github.com/foammys)
 
 Проект распространяется под лицензией [MIT](license)
