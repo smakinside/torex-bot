@@ -1,9 +1,9 @@
-# 🧠 Cortex Bot ![Release](https://img.shields.io/github/v/release/foammys/cortex-bot-tg)
+# 🧠 Torex Bot ![Release](https://img.shields.io/github/v/release/foammys/torex-bot)
 
 > Бот [Telegram](https://telegram.org) для генерации сообщений с помощью цепей Маркова
 
-![Size](https://img.shields.io/github/repo-size/foammys/cortex-bot-tg)
-![License](https://img.shields.io/github/license/hepller/cortex-bot)
+![Size](https://img.shields.io/github/repo-size/foammys/torex-bot)
+![License](https://img.shields.io/github/license/foammys/torex-bot)
 
 ## ⚙ Конфигурация
 
