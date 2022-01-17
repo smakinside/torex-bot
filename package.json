@@ -1,6 +1,6 @@
 {
   "name": "torex-bot",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "TG delirium generator bot",
   "main": "core/core.js",
   "type": "module",

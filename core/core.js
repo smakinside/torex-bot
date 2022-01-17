@@ -1,9 +1,9 @@
-/** __  __   __  ___  ___
- * /   /  \ |__)  |  |__  \_/
- * \__ \__/ |  \  |  |___ / \
+/** ___ __   __   ___
+ *   | /  \ |__) |__  \_/
+ *   | \__/ |  \ |___ / \
+
  *
- * @copyright © 2021-2022 hepller
- * 2022 | forked by foammy
+ * @copyright © 2022 foammy
  */
 
 // Импорт зависимостей
@@ -27,7 +27,7 @@ const project = JSON.parse(readFileSync('package.json', 'utf8'))
 const tg = new Telegraf(config.longpoll.token)
 
 // Сообщение о запуске
-Logger.info(`Cortex Bot v${project.version} запущен`)
+Logger.info(`Torex Bot v${project.version} запущен`)
 
 // Сообщение о подключении к TG API
 Logger.info('Подключение к TG API ...')
