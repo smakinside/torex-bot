@@ -25,7 +25,7 @@ messages: true
 # Генерация текста
 generation: true
   # Минимальное кол-во слов в генерируемом тексте
-  min_words: 5
+  min_words: 1
 
 # Настройки БД
 database: true
