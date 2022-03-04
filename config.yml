@@ -8,7 +8,7 @@ longpoll:
   token: 5230765611:AAHC2D-VeDuS8FJ85yQVmAT5YymY2H5bF_g
 
 # Отправка сообщений
-messages:
+messages: true
   # Шанс генерации текста
   chance: 1
   # Максимальное кол-во символов в тексте
