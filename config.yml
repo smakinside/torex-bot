@@ -8,7 +8,7 @@ longpoll:
   token: 5230765611:AAHC2D-VeDuS8FJ85yQVmAT5YymY2H5bF_g
 
 # Отправка сообщений
-messages: true
+messages:
   # Шанс генерации текста
   chance: 1
   # Максимальное кол-во символов в тексте
@@ -23,12 +23,12 @@ messages: true
   writing_imitation: true
 
 # Генерация текста
-generation: true
+generation: 
   # Минимальное кол-во слов в генерируемом тексте
   min_words: 1
 
 # Настройки БД
-database: true
+database: 
   # Сохранение сообщений пользователей
   # * Одинаковые строки не сохраняются
   data_save: true
