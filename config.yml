@@ -5,15 +5,15 @@
 # Настройки TG API
 longpoll:
   # Токен доступа
-  token: TOKEN
+  token: 5230765611:AAHC2D-VeDuS8FJ85yQVmAT5YymY2H5bF_g
 
 # Отправка сообщений
-messages:
+messages: true
   # Шанс генерации текста
-  chance: 100
+  chance: 2
   # Максимальное кол-во символов в тексте
   # * Если символов в тексте будет больше данного значения сообщение не отправится
-  symbols_limit: 250
+  symbols_limit: 300
   # ID бесед, в которых бот активен
   # Чтобы бот работал везде поставьте значение <<all>>
   active_chats: all
@@ -23,7 +23,7 @@ messages:
   writing_imitation: true
 
 # Генерация текста
-generation:
+generation: true
   # Минимальное кол-во слов в генерируемом тексте
   min_words: 5
 
